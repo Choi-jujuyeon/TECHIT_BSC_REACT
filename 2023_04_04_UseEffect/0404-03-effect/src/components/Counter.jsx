@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
+//Function component 방식 사용
 const Counter = ({ count, setCount }) => {
     //const [count, setCount] = useState(0);
 
