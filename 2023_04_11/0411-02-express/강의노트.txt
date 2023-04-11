@@ -1,0 +1,40 @@
+    app.get("/user/:id", (req, res) => {
+    res.send("유저 정보 조회");
+});
+
+위와 같을 경우! 문제점 !
+~~~> 여기 저기 섞이고 불편하고 코드도 많아지고 등등등
+
+=> twitter을 만든다고 해보자 
+    => 라우팅(read,create,delete,update)/ 유저라우터/ 트윗라우터 
+    => 한 페이지에 모든 내용을 작성하기에는 너무 복잡하다 !
+    => 라우터의 개념이 필요하게 됌 ~!
+
+
+
+//////////////////////본 수업 시작 !//////////////////////
+
+
+라우터 사용 시작 !
+step 01. routes/ tweet.js와 user.js 파일 생성하기
+
+step 02. user.js 내용 작성하기 
+
+step 03. app.js에 user.js 연결해주기
+
+step 04. tweet.js 내용 작성하기
+
+step 05. app.js에 tweet.js 연결해주기
+
+step 06. npm i nodemon 작성 !
+        => package.json script 내용 수정하기
+"scripts": {
+    "dev": "nodemon app.js"
+  },
+        => npm run dev
+
+        npm rm -rf nodemon 
+        npm -i -D nodemon
+
+step 07. 각각에 내용 더 추가하기 !
+

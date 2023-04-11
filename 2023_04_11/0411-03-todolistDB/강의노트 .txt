@@ -1,0 +1,88 @@
+# 기본 세팅
+
+    step 01. backend frontend 파일 생성
+
+    step 02. (backend 먼저 실행) npm init
+            => entry poin 에서 app.js
+            => "author": "JU",
+            => "license": "MIT"
+
+    step 03. npm i express
+
+    step 04. app.js 기본 setting 작성하기
+
+    step 05. nodemon 확인하기 
+        => npm i nodemon
+
+        => script 수정하기
+            "scripts": {
+            "dev": "nodemon app.js"
+            },
+        
+        => npm run dev
+
+
+//////// 지금부터 시작 ! ////////
+
+# 실습 시작 
+    step 01. todoListData.json 생성하기
+        : 임시 데이터 베이스 생성 
+
+
+    step 02. todoList 만들기
+
+        => todo 생성
+            (C) - post 요청(HTTP_요청) - /(REST_API)
+
+        => 전체 todolist 
+            (R) - Get 요청(HTTP_요청) - /(REST_API)
+
+        => 특정 todolist 
+            (R) - Get 요청(HTTP_요청) - /:id(REST_API)
+
+        => todolist 수정
+            (U) - Put 요청(HTTP_요청) - /:id(REST_API)
+
+        => todolist 완료 여부
+            (U) - Put 요청(HTTP_요청) - /done/:id(REST_API)
+
+        => todolist 삭제
+            (D) - Delete 요청(HTTP_요청) - /:id(REST_API)
+        
+
+        => app.json 에서 코드 작성
+            : insomnia에서 온 json을 콘솔창에서 확인할 수 있게 된다.
+            app.use(express.json()); 
+
+    step 03. Reat API 만들기 
+
+
+
+
+///////////////filter 예제 학습    ///////////////
+ 
+    step 01. 과일 객체 생성
+
+    step 02. 5글자 이상의 과일 이름은 빼고 싶다!
+            => fruits.filter
+    
+    stpe 03. filter() vs map()
+            => filter : 값이 그대로 담긴다.
+            => map : 조건에 만족하는지 아닌지 불린 값으로 나타내줌.
+                    조건을 생성할 경우 == 조건에 만족하는 내용만 출력됌
+                    대신!!! 조건에 만족하지 않으면 undefined 라고 출력됌
+
+
+/////////////// 여기서부터는 내가 궁금했던 부분///////////////
+
+
+# res.json VS res.send()의 차이
+
+    => res.json()
+        : JSON 데이터를 응답으로 보낸다.
+            -> 객체를 JSON 문자열로 변환한다.
+
+    => res.send()
+        : 다양한 유형의 데이터를 응답으로 보낼 수 있다.
+
+# 

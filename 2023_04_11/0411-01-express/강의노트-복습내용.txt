@@ -1,0 +1,24 @@
+ #express 파일 만드는 순서 !
+ 
+    step 01. npm init
+    
+    step 02. 파일 생성시 수정할 내용
+            => entry point: (index.js) app.js     
+            => git repository: test   
+
+            => author: JUYEON                                                                                                  
+            => license: (ISC) MIT      
+
+    step 03. 노드.js 명령어만 가지고 서버를 만들 수 있으나 어렵 ~> 다음 명령어 실행
+            => npm i express                                                                                  
+
+    step 04. app.js 파일 생성하기
+
+    step 05. app.js 모두 작성 후  node app.js
+
+    step 06. get 요청은 포트 번호만 할 수 있음
+            => http://localhost:3010/
+
+    step 07. put, delete, post는 insomnia or postman에 들어가서 확인해 볼 수 있다.
+
+
