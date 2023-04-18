@@ -1,0 +1,119 @@
+pscale connect to-do-list//어떤 파일 위치나 상관 없음
+
+npm run dev//backend위치에서 실행하기
+
+npx prisma db push//이거는 스키마 변경시 꼭 넣어줘야한다 !!!
+npx prisma studio//backend 위치에서 활용하기 
+
+
+
+@prisma/client
+const client = new PrismaClient();
+
+
+
+accout 값이 이전에 조회를 해보고
+있음면 push 해주기
+
+그래야 @unqiue 값이 있어도
+가능함
+
+새변수 생성
+//지금 하려는 상황이
+중복되면 안되는 값인 계좌를 처리하게 하려면
+계좌 생성이 가능한 상황인지 먼저 파악하게 만들어준다.
+
+이때 계좌가 있다면 에러코드 발생하게 만들어보자 
+
+//계좌는 중복해서 사용하면 안되는 값을 의미한다.
+그러면 중복한 값인지 아닌지 앞에 체크하는 조건문을 활용할 수 있다.
+
+//그렇다면 앞에 조건문에서 계좌정보가 있을 경우에
+실패를 했다는 문구를 사용하면 되지 않을까 ?
+
+// 유저 조회
+
+get요청을 통해서 
+get("/:id" => 아이값을 기준으로 한 명한 get으로 갖와서
+쿼리로 id 하나만 받아와서  
+
+//get요청으로 유저를 조회할 경우
+http://localhost:3010/user/3 이렇게 get요청을 하면
+입력한 값인 3이 백엔드로 들어오게 된다.
+=> 이때 문자를 입력하건 숫자를 입력하건 다 들어오게 되고
+(나중에는 이 값을 기준으로 데이터 베이스를 조회하게 된다.)
+
+여기까지는 id 값으로 조회를 한 경우이지만
+//여기서부터는 account로 값을 조회해보는 기능을 구현해보자 !
+http://localhost:3010/user/abcd(get요청 하기 )
+{
+	"ok": true,
+	"user": {
+		"id": 3,
+		"account": "abcd",
+		"name": null,
+		"createdAt": "2023-04-13T08:11:35.969Z",
+		"upDatedAt": "2023-04-13T08:11:16.042Z"
+	}
+}
+
+
+http://localhost:3010/user/a
+{
+	"ok": false,
+	"error": "Not exist user."
+}
+
+///////2교시 시작
+
+user.js 시작하기
+
+app.js에 들어가서 라우터 연결하기
+const todoRouter = require("./routes/todo");
+app.use("/todo", todoRouter);
+
+
+//todo리스트 생성하기
+trycatch 왜하는지 -
+async 왜하는지
+비동기 처리 하기 위해서
+지금 상황은 데이터베이스와 통신하기 위한 상황이다.
+
+=> 어떤 유저를 받아오는 지 해야하고
+=> todo 정보다 받아와야함
+
+const{todo,userId} = req.body
+위 값들을 안줬을 때에 대한 error 처리를 해줘야함
+ if (!todo) {
+            return res
+                .status(400)
+                .json({ ok: false, error: "Not exitst todo !!!" });
+        }
+        if (!userId) {
+            return res
+                .status(400)
+                .json({ ok: false, error: "Not exitst todo !!!" });
+        }
+        그것이 바로 이부분 각각의 값이 안들ㅇ
+
+
+        ///
+        유저를 생성해줘야하는데 ~~~> userId가 있는 지 없는지를 확인해줘야함.
+
+        다 작성해주고 insomnia에서 조회해보기
+
+        ///
+        usertable에서 id는 userid이다 
+        ///
+
+        댓글 테이블 만들어 보는 것이 
+        도전과제 !!!
+
+        Bcrypt 를 사용해서 로그인 구현 가능함 .. ?
+        todolist 자체 이해하기
+        Session
+        JWT
+        활용하기 !
+        암호화된 키 값 정리하기 !
+        
+        

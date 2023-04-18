@@ -1,0 +1,53 @@
+프리즈마 클라이언트 == 디비랑 백엔드 소통할떄 사용
+
+사용법 : 쓸 파일에서 
+
+cors 패키지 == cors 정책 ~>cors 패키지를 사용함.
+
+express 백엔드를 사용함.
+
+
+//todo.js ~>json파일을 못 읽어서 읽어오게 하려고 
+app.use(express.json());
+
+위 코드는 json 데이터를 자바스크립트 객체로 변환할 수 있다.
+
+
+//use.js
+
+프리즈마 클라이언트 사용함
+라우터 주소는 
+ 
+-> 유저 생성 == post 요청
+        바디를 통해서 값을 받아옴
+            create는 유저만 하면 됌 !
+            스키마에서 User - account에 unique 속성을 추가하여 중복된 값을 추가하지 못한다.
+
+            이런 형상을 방지하기 위해서
+            생성 전에 조회를 먼저 하는 조건문을 활용해야 한다. !
+
+        findUnique함수를 사용해 유저를 한 명만 조회를 하기 때문ㅇㅔ
+            //App 에서 
+
+
+
+
+
+-> 유저 조회 == get 요청
+    바디를 사용하지 않고 params를 활용하였다.
+
+    https://localhost:3010/user/아이디명 넣어주기
+
+    쿼리스트링
+    const {age,accout} = req.query
+    ex) https://localhost:3010/user/아이디명 넣어주기?age=18&height=176
+
+
+
+//todo.js
+
+todo와 js를 받아온다.
+
+01. todo가 없는 경우
+02. userId가 없는 경우
+

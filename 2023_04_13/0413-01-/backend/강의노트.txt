@@ -1,0 +1,106 @@
+//기본세팅
+step 01. 기본 세팅 명령어
+    npm init
+    npm -i express
+    npm i -D nodemon
+
+    => package.json 파일 수정
+        "scripts": {
+                "dev": "nodemon app.js"
+            },
+
+step 02. 프리즈마 설치하기 
+    npm i -D prisma 
+
+/////////////내용 작성하기 시작
+
+step 03. model 명 작성하기 : User
+    -> id
+    -> account
+        : @unique 적어줘야 함
+    -> name
+        : String이 있어도 되고 없어도 됌.==?로 작성
+    -> createdAt
+        : @default{now()}를 작성하면 생성되는 순간 값을 createdAt으로 저장함
+    -> upDatedAt
+        : 처음에는 생성시간으로 저장되어 있지만, @updataedAt을 활용하면 업데이트 되는 순간 값이 변경됌
+
+step 04. model 명 작성하기 : Todo
+    -> id
+    -> todo
+    -> createdAt
+    ->upDateedAt
+
+e다의 관계에서 관계를 적어주면 된다
+-> 이때 관계를 나타내는 부분 작성 !
+
+user user @relation(fields:[userId], references:[id])
+  userId    Int
+  적어놓겠다 ==userid로 반영할 부분 ==id(user의 id)
+
+=>  @@index([userId])를 작성해주면 검색 효율 증가!    
+
+=> provider = "mysql" 로 수정하기 
+=> relationMode = "prisma"
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+=> PlanetScale 서비스 이용하기 !
+~~> 설치부터 해야 한다~^^*
+
+=> scoop update pscale
+=> pscale auth login
+
+=> .env 변경해주기
+    : DATABASE_URL="mysql://127.0.0.1:3306/to-do-list"
+
+
+=> pscale connect to-do-list
+
+
+=> npx prisma db push (backend 파일에서 진행)
+
+
+///내가 찾아본 정보///
+=> @default: 해당 필드의 기본값을 설정합니다. 
+=> @unique: 해당 필드의 값이 고유(unique)해야 함을 나타냅니다.
+=> @updatedAt: 해당 필드가 업데이트 될 때마다 자동으로 업데이트된 시간을 저장합니다.
+
+=>autoincrement()
+    : 새로운 사용자를 생성할 때마다 id 필드는 자동으로 이전 사용자의 id 값에 1을 더한 값으로 설정됩니다.
+
+////
+
+
+
+ Set-ExecutionPolicy RemoteSigned -Scope CurrentUse   
+  irm get.scoop.sh | iex  
+
+  scoop bucket add pscale https://github.com/planetscale/scoop-bucket.git
+scoop install pscale mysqlscoop install pscale mysql
+
+scoop update pscale
+pscale auth login
+
+pscale connect to-do-list
+
+하고 
+=> .env 변경해주기
+    : DATABASE_URL="mysql://127.0.0.1:3306/to-do-list"
+
+
+
+npx prisma db push(백엔드 서버는 켜둔 상태로 다른 cmd창에서 실행)
+
+//백엔드 위치에서 다시 시작 ! (서버는 계속 켜두기 !)
+//백엔드 cmd에서 활용
+npx prisma db push
+
+npx prisma studio
+    -> prisma studio에서 User, Todo 내용 작성해보기
+
+"npx prisma studio,
+database와 코드를 연결해주는 것 ?
